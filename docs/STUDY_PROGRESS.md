@@ -86,25 +86,25 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 ### cpp17 — 15 files (`-std=c++17`)
 
 #### High (3)
-- [ ] H `class_template_argument_deduction.cpp` — CTAD
-- [ ] H `fold_expressions.cpp` — `(args + ...)`
-- [ ] H `charconv.cpp` — `std::from_chars`, `to_chars`
+- [x] H `class_template_argument_deduction.cpp` — CTAD
+- [x] H `fold_expressions.cpp` — `(args + ...)`
+- [x] H `charconv.cpp` — `std::from_chars`, `to_chars`
 
 #### Medium (7)
-- [ ] M `clamp_sample.cpp` — `std::clamp`, `std::sample`
-- [ ] M `gcd_lcm.cpp` — `std::gcd`, `std::lcm`
-- [ ] M `has_include.cpp` — `__has_include`
-- [ ] M `nested_namespaces.cpp` — `namespace A::B::C { ... }`
-- [ ] M `byte.cpp` — `std::byte`
-- [ ] M `memory_resource.cpp` — `<memory_resource>` PMR
-- [ ] M `searcher.cpp` — `std::boyer_moore_searcher`
+- [x] M `clamp_sample.cpp` — `std::clamp`, `std::sample`
+- [x] M `gcd_lcm.cpp` — `std::gcd`, `std::lcm`
+- [x] M `has_include.cpp` — `__has_include`
+- [x] M `nested_namespaces.cpp` — `namespace A::B::C { ... }`
+- [x] M `byte.cpp` — `std::byte`
+- [x] M `memory_resource.cpp` — `<memory_resource>` PMR
+- [x] M `searcher.cpp` — `std::boyer_moore_searcher`
 
 #### Low (5)
-- [ ] L `launder.cpp` — `std::launder`
-- [ ] L `aligned_alloc.cpp` — over-aligned `new`
-- [ ] L `if_init_statement.cpp` — `if (init; cond)`
-- [ ] L `template_auto.cpp` — `template<auto V>`
-- [ ] L `piecewise_construct.cpp` — `std::piecewise_construct`
+- [x] L `launder.cpp` — `std::launder`
+- [x] L `aligned_alloc.cpp` — over-aligned `new`
+- [x] L `if_init_statement.cpp` — `if (init; cond)`
+- [x] L `template_auto.cpp` — `template<auto V>`
+- [x] L `piecewise_construct.cpp` — `std::piecewise_construct`
 
 ### cpp20 — 21 files (`-std=c++20`)
 
@@ -243,22 +243,27 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 - **Session 1 total: 13 files**
 
 ### Session 2 — 2026-04-10
-- cpp11 Medium complete: 7 files (unordered_containers, regex, random, raw_string_literals, condition_variable, namespace_alias, ratio)
-- cpp11 Low complete: 6 files (attribute_noreturn, alignas_alignof, extended_friend, trailing_return_type, explicit_conversion_op, unicode_literals)
-- cpp14 complete: 8 files (make_unique, variable_templates, relaxed_constexpr, integer_sequence, shared_timed_mutex, quoted, exchange, tuple_get_by_type)
-- cpp11 fully done (21/21), cpp14 fully done (8/8)
-- All 21 new files compiled with `-std=c++11`/`-std=c++14` and run successfully
+- cpp11 Medium (7), cpp11 Low (6), cpp14 (8)
+- cpp11 21/21, cpp14 8/8
 - **Session 2 total: 21 files. Cumulative: 34 / 132 (25.8%)**
+
+### Session 3 — 2026-04-10
+- cpp17 High (3): class_template_argument_deduction, fold_expressions, charconv
+- cpp17 Medium (7): clamp_sample, gcd_lcm, has_include, nested_namespaces, byte, memory_resource, searcher
+- cpp17 Low (5): launder, aligned_alloc, if_init_statement, template_auto, piecewise_construct
+- cpp17 fully done (15/15)
+- All 15 new files compiled with `-std=c++17 -Wall -Wextra` and run successfully
+- Note: clangd IDE diagnostics show false positives (defaults to older standard) — only `clang++ -std=c++17` results count
+- **Session 3 total: 15 files. Cumulative: 49 / 132 (37.1%)**
 
 ### Next session starts at
 
 > Read this section first when resuming.
 
-**Pointer**: cpp17 batch (15 files) — start with the 3 High items
-(`class_template_argument_deduction`, `fold_expressions`, `charconv`), then 7 Medium,
-then 5 Low. Use `-std=c++17 -Wall -Wextra`.
+**Pointer**: cpp20 batch (21 files) — start with the 10 High items, then 8 Medium,
+then 3 Low. Use `-std=c++20 -Wall -Wextra`.
 
-After cpp17, continue with cpp20 (21), cpp23 (27), then patterns (35).
+After cpp20, continue with cpp23 (27), then patterns (35).
 
 **Compilation command template**:
 ```
