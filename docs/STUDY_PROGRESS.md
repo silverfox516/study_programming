@@ -178,16 +178,16 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 ## Pattern gaps — 35 files (`dp/cpp/`)
 
 ### Concurrency patterns (10)
-- [ ] H `producer_consumer.cpp` — bounded blocking queue
-- [ ] H `thread_pool.cpp` — worker pool with task queue
-- [ ] H `active_object.cpp` — POSA2 method invocation decoupling
-- [ ] H `monitor_object.cpp` — synchronized class methods
-- [ ] M `reactor.cpp` — event demultiplexing
-- [ ] M `proactor.cpp` — async I/O dispatch
-- [ ] M `double_checked_locking.cpp` — singleton variant
-- [ ] M `read_write_lock.cpp` — `shared_mutex` pattern form
-- [ ] L `leader_followers.cpp`
-- [ ] L `half_sync_half_async.cpp`
+- [x] H `producer_consumer.cpp`
+- [x] H `thread_pool.cpp`
+- [x] H `active_object.cpp`
+- [x] H `monitor_object.cpp`
+- [x] M `reactor.cpp`
+- [x] M `proactor.cpp`
+- [x] M `double_checked_locking.cpp`
+- [x] M `read_write_lock.cpp`
+- [x] L `leader_followers.cpp`
+- [x] L `half_sync_half_async.cpp`
 
 ### Architectural / enterprise / DDD (12)
 - [ ] H `cqrs.cpp` — pairs with existing `event_sourcing.cpp`
@@ -260,19 +260,24 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 - **Session 4 total: 18. Cumulative: 67 / 132 (50.8%)**
 
 ### Session 5 — 2026-04-10
-- cpp23 H (9): flat_map_set, mdspan, generator (guarded), ranges_to, deducing_this, multidimensional_subscript, static_call_operator, string_contains, move_only_function (guarded)
-- cpp23 M (12): expected_monadic, ranges_zip/enumerate/adjacent/chunk/slide/join_with/cartesian/repeat (most guarded), out_ptr, print_println, expected_constructors
-- cpp23 L (6): constexpr_unique_ptr, auto_decay_copy, size_t_literal, extended_floating_point (guarded), consteval_if_propagation, assume_attribute
-- cpp23 fully done (27/27)
-- libc++ feature-test gating: 9 files use `#if defined(__cpp_lib_*)` guards with working fallbacks for Apple clang 21 (generator, move_only_function, ranges_zip/enumerate/adjacent/chunk/slide/cartesian, extended_float). All compile and run, falling through to portable workarounds.
-- **Session 5 total: 27 files. Cumulative: 94 / 132 (71.2%)**
+- cpp23 H 9 + M 12 + L 6 = 27 files; cpp23 fully done
+- 9 files use `#if defined(__cpp_lib_*)` guards with fallbacks for libc++ gaps
+- **Session 5 total: 27. Cumulative: 94 / 132 (71.2%)**
+
+### Session 6 — 2026-04-10
+- Concurrency H (4): producer_consumer, thread_pool, active_object, monitor_object
+- Concurrency M (4): reactor, proactor, double_checked_locking, read_write_lock
+- Concurrency L (2): leader_followers, half_sync_half_async
+- Concurrency category fully done (10/10)
+- All 10 files compiled with `clang++ -std=c++17 -pthread` and run successfully
+- **Session 6 total: 10 files. Cumulative: 104 / 132 (78.8%)**
 
 ### Next session starts at
 
 > Read this section first when resuming.
 
-**Pointer**: pattern gaps — 35 files in `dp/cpp/`. Order:
-1. Concurrency (10): producer_consumer, thread_pool, active_object, monitor_object, reactor, proactor, double_checked_locking, read_write_lock, leader_followers, half_sync_half_async
+**Pointer**: pattern gaps continue — 25 remaining in `dp/cpp/`:
+1. ~~Concurrency (10)~~ ✅ done in Session 6
 2. Architectural/DDD (12): cqrs, unit_of_work, specification, service_locator, lazy_initialization, data_mapper, value_object, domain_event, saga, pipes_and_filters, table_module, transaction_script
 3. Resilience (8): retry, bulkhead, timeout, throttling, cache_aside, health_endpoint, ambassador, compensating_transaction
 4. Modern C++ idioms (5): pimpl, crtp, type_erasure, tag_dispatch, policy_based_design
