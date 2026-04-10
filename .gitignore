@@ -1,0 +1,55 @@
+# Build artifacts
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.dSYM/
+
+# CMake
+build/
+build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Rust
+target/
+**/*.rs.bk
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*~
+
+# Compiled C/C++ executables in spec/ and dp/ (no extension on macOS/Linux)
+# Source-of-truth: only .cpp/.hpp/.c/.h are tracked under these trees.
+spec/cpp/**/[!.]*
+!spec/cpp/**/*.cpp
+!spec/cpp/**/*.hpp
+!spec/cpp/**/*.cppm
+!spec/cpp/**/*.h
+!spec/cpp/**/*.md
+!spec/cpp/**/CMakeLists.txt
+!spec/cpp/**/.gitkeep
+!spec/cpp/**/*/
+
+dp/cpp/[!.]*
+!dp/cpp/*.cpp
+!dp/cpp/*.hpp
+!dp/cpp/*.h
+!dp/cpp/*.md
+!dp/cpp/CMakeLists.txt
+
+dp/c/[!.]*
+!dp/c/*.c
+!dp/c/*.h
+!dp/c/*.md
+!dp/c/CMakeLists.txt
