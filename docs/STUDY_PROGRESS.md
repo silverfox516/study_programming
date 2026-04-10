@@ -108,32 +108,32 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 
 ### cpp20 — 21 files (`-std=c++20`)
 
-#### High (10)
-- [ ] H `concepts_requires.cpp` — `requires` clauses, requires-expressions, custom concepts
-- [ ] H `latch_barrier.cpp` — `std::latch`, `std::barrier`
-- [ ] H `semaphore.cpp` — counting/binary semaphore
-- [ ] H `stop_token.cpp` — `std::stop_token` / `stop_source`
-- [ ] H `bit_cast.cpp` — `std::bit_cast`
-- [ ] H `designated_initializers.cpp` — `Foo{.x = 1}`
-- [ ] H `aggregate_init_parens.cpp` — `()` for aggregates
-- [ ] H `string_starts_ends_with.cpp` — `starts_with`, `ends_with`
-- [ ] H `atomic_ref.cpp` — `std::atomic_ref`, `atomic<shared_ptr>`
-- [ ] H `template_lambda.cpp` — `[]<typename T>(T x)`
+#### High (10) — 8 new (latch+semaphore: sync_primitives.cpp; bit_cast: bit_manipulation.cpp)
+- [x] H `concepts_requires.cpp` — `requires` clauses, custom concepts
+- [x] H `barrier.cpp` — `std::barrier` (latch already in sync_primitives.cpp)
+- [-] H `semaphore` — already covered by `sync_primitives.cpp`
+- [x] H `stop_token.cpp` — explicit stop_source/stop_callback
+- [-] H `bit_cast` — already covered by `bit_manipulation.cpp`
+- [x] H `designated_initializers.cpp`
+- [x] H `aggregate_init_parens.cpp`
+- [x] H `string_starts_ends_with.cpp`
+- [x] H `atomic_ref.cpp`
+- [x] H `template_lambda.cpp` — `[]<typename T>(T x)`
 
-#### Medium (8)
-- [ ] M `concepts_standard_library.cpp` — `<concepts>` header
-- [ ] M `ranges_factories.cpp` — `views::iota`, `views::single`
-- [ ] M `ranges_pipeline.cpp` — elaborate pipeline beyond current `ranges.cpp`
-- [ ] M `chrono_calendar.cpp` — calendar/timezone additions
-- [ ] M `format_advanced.cpp` — custom `std::formatter` specialization
-- [ ] M `endian.cpp` — `std::endian`
-- [ ] M `coroutine_generator.cpp` — hand-written generator coroutine
-- [ ] M `lambda_pack_capture.cpp` — `[...args = ...]` pack capture
+#### Medium (8) — 7 new (endian: bit_manipulation.cpp)
+- [x] M `concepts_standard_library.cpp`
+- [x] M `ranges_factories.cpp`
+- [x] M `ranges_pipeline.cpp`
+- [x] M `chrono_calendar.cpp`
+- [x] M `format_advanced.cpp`
+- [-] M `endian` — already covered by `bit_manipulation.cpp`
+- [x] M `coroutine_generator.cpp`
+- [x] M `lambda_pack_capture.cpp`
 
 #### Low (3)
-- [ ] L `feature_test_macros.cpp` — `__cpp_lib_*` macros
-- [ ] L `consteval_propagation.cpp` — `consteval` interaction edge cases
-- [ ] L `aggregate_designated_array.cpp` — designated init for arrays/nested
+- [x] L `feature_test_macros.cpp`
+- [x] L `consteval_propagation.cpp`
+- [x] L `aggregate_designated_array.cpp`
 
 ### cpp23 — 27 files (`-std=c++2b` / `-std=c++23`)
 
@@ -248,22 +248,30 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 - **Session 2 total: 21 files. Cumulative: 34 / 132 (25.8%)**
 
 ### Session 3 — 2026-04-10
-- cpp17 High (3): class_template_argument_deduction, fold_expressions, charconv
-- cpp17 Medium (7): clamp_sample, gcd_lcm, has_include, nested_namespaces, byte, memory_resource, searcher
-- cpp17 Low (5): launder, aligned_alloc, if_init_statement, template_auto, piecewise_construct
-- cpp17 fully done (15/15)
+- cpp17 H (3) + M (7) + L (5) = 15 files; cpp17 fully done (15/15)
 - All 15 new files compiled with `-std=c++17 -Wall -Wextra` and run successfully
-- Note: clangd IDE diagnostics show false positives (defaults to older standard) — only `clang++ -std=c++17` results count
-- **Session 3 total: 15 files. Cumulative: 49 / 132 (37.1%)**
+- Note: clangd IDE diagnostics show false positives (defaults to older standard) — only `clang++ -std=c++NN` results count
+- **Session 3 total: 15. Cumulative: 49 / 132 (37.1%)**
+
+### Session 4 — 2026-04-10
+- cpp20 H: 8 new files (concepts_requires, barrier, stop_token, designated_initializers, aggregate_init_parens, string_starts_ends_with, atomic_ref, template_lambda)
+  - 2 H items already covered: latch+semaphore (sync_primitives.cpp), bit_cast (bit_manipulation.cpp)
+- cpp20 M: 7 new files (concepts_standard_library, ranges_factories, ranges_pipeline, chrono_calendar, format_advanced, coroutine_generator, lambda_pack_capture)
+  - 1 M item already covered: endian (bit_manipulation.cpp)
+- cpp20 L: 3 new files (feature_test_macros, consteval_propagation, aggregate_designated_array)
+- cpp20 gap items: 21/21 covered (18 new + 3 existing maps)
+- All 18 new files compiled with `-std=c++20 -Wall -Wextra` and run successfully
+- **Session 4 total: 18 new files. Cumulative: 67 / 132 (50.8%) — half-way!**
 
 ### Next session starts at
 
 > Read this section first when resuming.
 
-**Pointer**: cpp20 batch (21 files) — start with the 10 High items, then 8 Medium,
-then 3 Low. Use `-std=c++20 -Wall -Wextra`.
+**Pointer**: cpp23 batch — 27 items. Many will need `#if __has_include` guards
+because libc++ support varies (`flat_map`, `mdspan`, `generator`).
+Use `-std=c++2b -Wall -Wextra` (or `-std=c++23` depending on compiler).
 
-After cpp20, continue with cpp23 (27), then patterns (35).
+After cpp23, continue with patterns (35).
 
 **Compilation command template**:
 ```
