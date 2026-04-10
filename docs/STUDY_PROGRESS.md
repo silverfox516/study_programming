@@ -51,37 +51,37 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 - [x] H `uniform_initialization.cpp` — `{}` brace-init, narrowing rules
 
 #### Medium (7)
-- [ ] M `unordered_containers.cpp` — `unordered_map/set/multimap`
-- [ ] M `regex.cpp` — `<regex>` basics
-- [ ] M `random.cpp` — `<random>` engines + distributions
-- [ ] M `raw_string_literals.cpp` — `R"(...)"`, char literal prefixes
-- [ ] M `condition_variable.cpp` — pair with mutex_locks
-- [ ] M `namespace_alias.cpp` — `namespace ns = a::b::c;`
-- [ ] M `ratio.cpp` — `<ratio>` companion to chrono
+- [x] M `unordered_containers.cpp` — `unordered_map/set/multimap`
+- [x] M `regex.cpp` — `<regex>` basics
+- [x] M `random.cpp` — `<random>` engines + distributions
+- [x] M `raw_string_literals.cpp` — `R"(...)"`, char literal prefixes
+- [x] M `condition_variable.cpp` — pair with mutex_locks
+- [x] M `namespace_alias.cpp` — `namespace ns = a::b::c;`
+- [x] M `ratio.cpp` — `<ratio>` companion to chrono
 
 #### Low (6)
-- [ ] L `attribute_noreturn.cpp` — `[[noreturn]]`
-- [ ] L `alignas_alignof.cpp` — alignment control
-- [ ] L `extended_friend.cpp` — extended friend declarations
-- [ ] L `trailing_return_type.cpp` — `auto f() -> T`
-- [ ] L `explicit_conversion_op.cpp` — `explicit operator T()`
-- [ ] L `unicode_literals.cpp` — `u8`, `u`, `U` string literals
+- [x] L `attribute_noreturn.cpp` — `[[noreturn]]`
+- [x] L `alignas_alignof.cpp` — alignment control
+- [x] L `extended_friend.cpp` — extended friend declarations
+- [x] L `trailing_return_type.cpp` — `auto f() -> T`
+- [x] L `explicit_conversion_op.cpp` — `explicit operator T()`
+- [x] L `unicode_literals.cpp` — `u8`, `u`, `U` string literals
 
 ### cpp14 — 8 files (`-std=c++14`)
 
 #### High (2)
-- [ ] H `make_unique.cpp` — `std::make_unique`
-- [ ] H `variable_templates.cpp` — `template<typename T> constexpr T pi = ...;`
+- [x] H `make_unique.cpp` — `std::make_unique`
+- [x] H `variable_templates.cpp` — `template<typename T> constexpr T pi = ...;`
 
 #### Medium (3)
-- [ ] M `relaxed_constexpr.cpp` — multi-statement constexpr functions
-- [ ] M `integer_sequence.cpp` — `std::index_sequence`, basis for tuple unpacking
-- [ ] M `shared_timed_mutex.cpp` — timed shared lock
+- [x] M `relaxed_constexpr.cpp` — multi-statement constexpr functions
+- [x] M `integer_sequence.cpp` — `std::index_sequence`, basis for tuple unpacking
+- [x] M `shared_timed_mutex.cpp` — timed shared lock
 
 #### Low (3)
-- [ ] L `quoted.cpp` — `std::quoted` stream manipulator
-- [ ] L `exchange.cpp` — `std::exchange`
-- [ ] L `tuple_get_by_type.cpp` — `std::get<T>(tuple)`
+- [x] L `quoted.cpp` — `std::quoted` stream manipulator
+- [x] L `exchange.cpp` — `std::exchange`
+- [x] L `tuple_get_by_type.cpp` — `std::get<T>(tuple)`
 
 ### cpp17 — 15 files (`-std=c++17`)
 
@@ -238,20 +238,27 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 ### Session 1 — 2026-04-10
 - Inventory + gap analysis (Phase 0) complete
 - `docs/STUDY_PROGRESS.md` created
-- cpp98 museum complete: README + 5 files (functor, mem_fun, auto_ptr, iterator_categories, template_specialization)
-- cpp11 High complete: 8 files (initializer_list, chrono, type_traits, move_semantics, perfect_forwarding, delegating_inheriting_ctors, default_delete, uniform_initialization)
-- All 13 files compiled with `-std=c++11/14` and run successfully on Apple clang 21
-- **Progress: 13 / 132 spec+pattern files (9.8%)**
+- cpp98 museum complete: README + 5 files
+- cpp11 High complete: 8 files
+- **Session 1 total: 13 files**
+
+### Session 2 — 2026-04-10
+- cpp11 Medium complete: 7 files (unordered_containers, regex, random, raw_string_literals, condition_variable, namespace_alias, ratio)
+- cpp11 Low complete: 6 files (attribute_noreturn, alignas_alignof, extended_friend, trailing_return_type, explicit_conversion_op, unicode_literals)
+- cpp14 complete: 8 files (make_unique, variable_templates, relaxed_constexpr, integer_sequence, shared_timed_mutex, quoted, exchange, tuple_get_by_type)
+- cpp11 fully done (21/21), cpp14 fully done (8/8)
+- All 21 new files compiled with `-std=c++11`/`-std=c++14` and run successfully
+- **Session 2 total: 21 files. Cumulative: 34 / 132 (25.8%)**
 
 ### Next session starts at
 
 > Read this section first when resuming.
 
-**Pointer**: cpp11 Medium batch — start with `unordered_containers.cpp`, then proceed
-in document order through the 7 cpp11 Medium items, then cpp11 Low (6), then cpp14 (8),
-then cpp17 (15), then cpp20 (21), then cpp23 (27), then patterns (35).
+**Pointer**: cpp17 batch (15 files) — start with the 3 High items
+(`class_template_argument_deduction`, `fold_expressions`, `charconv`), then 7 Medium,
+then 5 Low. Use `-std=c++17 -Wall -Wextra`.
 
-Compile cpp11/cpp14/cpp17 files with the matching `-std=c++NN -Wall -Wextra` flag.
+After cpp17, continue with cpp20 (21), cpp23 (27), then patterns (35).
 
 **Compilation command template**:
 ```
