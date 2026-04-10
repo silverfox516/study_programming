@@ -204,28 +204,28 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 - [x] L `transaction_script.cpp`
 
 ### Resilience / cloud (8)
-- [ ] H `retry.cpp` — pairs with `circuit_breaker.cpp`
-- [ ] H `bulkhead.cpp` — resource isolation
-- [ ] H `timeout.cpp` — timeout pattern
-- [ ] M `throttling.cpp` — rate limiting / backpressure
-- [ ] M `cache_aside.cpp` — cache + repository
-- [ ] M `health_endpoint.cpp` — `/health` checker
-- [ ] L `ambassador.cpp` — sidecar networking proxy
-- [ ] L `compensating_transaction.cpp` — pairs with saga
+- [x] H `retry.cpp`
+- [x] H `bulkhead.cpp`
+- [x] H `timeout.cpp`
+- [x] M `throttling.cpp`
+- [x] M `cache_aside.cpp`
+- [x] M `health_endpoint.cpp`
+- [x] L `ambassador.cpp`
+- [x] L `compensating_transaction.cpp`
 
 ### Modern C++ idiom patterns (5)
-- [ ] H `pimpl.cpp` — pointer-to-implementation
-- [ ] H `crtp.cpp` — Curiously Recurring Template Pattern
-- [ ] H `type_erasure.cpp` — `std::function`-style erasure
-- [ ] H `tag_dispatch.cpp` — compile-time strategy selection
-- [ ] H `policy_based_design.cpp` — Alexandrescu-style policies
+- [x] H `pimpl.cpp`
+- [x] H `crtp.cpp`
+- [x] H `type_erasure.cpp`
+- [x] H `tag_dispatch.cpp`
+- [x] H `policy_based_design.cpp`
 
 ---
 
 ## Phase 4 — finalization tasks
 
-- [ ] Add `.gitignore` at repo root (Mach-O artifacts: `*.o`, no extension binaries in `spec/cpp/**`)
-- [ ] Remove existing build artifacts: `spec/cpp/cpp98/bind1st_bind2nd`, `cpp11/bind`, `cpp14/generic_lambda`, `cpp20/bind_front`, `cpp23/bind_back`
+- [x] Add `.gitignore` at repo root — done in Session 1
+- [x] Remove existing build artifacts — done in Session 1
 - [ ] Add `spec/cpp/CMakeLists.txt` with per-standard subdirectories
 - [ ] Verify whole-tree build of `dp/cpp` and `spec/cpp`
 - [ ] Update repo `README.md` to link `docs/ROADMAP.md` and `docs/STUDY_PROGRESS.md`
@@ -269,24 +269,29 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 - **Session 6 total: 10. Cumulative: 104 / 132 (78.8%)**
 
 ### Session 7 — 2026-04-10
-- Architectural/DDD H (4): cqrs, unit_of_work, specification, service_locator
-- Architectural/DDD M (6): lazy_initialization, data_mapper, value_object, domain_event, saga, pipes_and_filters
-- Architectural/DDD L (2): table_module, transaction_script
-- Architectural/DDD fully done (12/12)
-- All 12 files compiled with `clang++ -std=c++17` and run successfully
-- **Session 7 total: 12 files. Cumulative: 116 / 132 (87.9%)**
+- Architectural/DDD 12/12 complete
+- **Session 7 total: 12. Cumulative: 116 / 132 (87.9%)**
+
+### Session 8 — 2026-04-10
+- Resilience H (3): retry, bulkhead, timeout
+- Resilience M (3): throttling, cache_aside, health_endpoint
+- Resilience L (2): ambassador, compensating_transaction
+- Modern C++ idioms (5): pimpl, crtp, type_erasure, tag_dispatch, policy_based_design
+- Resilience 8/8, Modern C++ idioms 5/5 — ALL PATTERN GAPS COMPLETE
+- All 13 files compiled with `clang++ -std=c++17` and run successfully
+- **Session 8 total: 13 files. Cumulative: 132 / 132 (100%) — DONE!**
 
 ### Next session starts at
 
 > Read this section first when resuming.
 
-**Pointer**: pattern gaps continue — 13 remaining in `dp/cpp/`:
-1. ~~Concurrency (10)~~ ✅
-2. ~~Architectural/DDD (12)~~ ✅
-3. Resilience (8): retry, bulkhead, timeout, throttling, cache_aside, health_endpoint, ambassador, compensating_transaction
-4. Modern C++ idioms (5): pimpl, crtp, type_erasure, tag_dispatch, policy_based_design
+**ALL 132 SPEC + PATTERN ITEMS COMPLETE.**
 
-Pattern files are richer than spec files (~150-300 lines, 2-4 example domains, modern C++ variant). Match the style of existing `dp/cpp/strategy.cpp`. CMakeLists.txt is glob-based — new files are picked up automatically.
+Remaining work (Phase 4 finalization):
+- [ ] Add `spec/cpp/CMakeLists.txt` with per-standard subdirectories
+- [ ] Verify whole-tree build of `dp/cpp` and `spec/cpp`
+- [ ] Update repo `README.md` to link `docs/ROADMAP.md` and `docs/STUDY_PROGRESS.md`
+- [ ] Phase 1: write `docs/ROADMAP.md` (curriculum)
 
 **Compilation command template**:
 ```
