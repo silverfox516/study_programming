@@ -141,37 +141,37 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 > known-fragile items: `flat_map`, `mdspan`, `generator`.
 
 #### High (9)
-- [ ] H `flat_map_set.cpp` — `std::flat_map`, `std::flat_set` *(verify libc++)*
-- [ ] H `mdspan.cpp` — `std::mdspan` *(verify libc++)*
-- [ ] H `generator.cpp` — `std::generator<T>` *(verify libc++)*
-- [ ] H `ranges_to.cpp` — `std::ranges::to<Container>()`
-- [ ] H `deducing_this.cpp` — explicit object parameter
-- [ ] H `multidimensional_subscript.cpp` — `m[i, j]`
-- [ ] H `static_call_operator.cpp` — `static operator()`
-- [ ] H `string_contains.cpp` — `std::string::contains`
-- [ ] H `move_only_function.cpp` — `std::move_only_function`
+- [x] H `flat_map_set.cpp`
+- [x] H `mdspan.cpp`
+- [!] H `generator.cpp` — guarded; libc++ lacks `<generator>`, see cpp20/coroutine_generator.cpp
+- [x] H `ranges_to.cpp`
+- [x] H `deducing_this.cpp`
+- [x] H `multidimensional_subscript.cpp`
+- [x] H `static_call_operator.cpp`
+- [x] H `string_contains.cpp`
+- [!] H `move_only_function.cpp` — guarded; libc++ lacks `std::move_only_function`
 
 #### Medium (12)
-- [ ] M `expected_monadic.cpp` — `expected::and_then` chain
-- [ ] M `ranges_zip.cpp` — `views::zip`
-- [ ] M `ranges_enumerate.cpp` — `views::enumerate`
-- [ ] M `ranges_adjacent.cpp` — `views::adjacent`
-- [ ] M `ranges_chunk.cpp` — `views::chunk`
-- [ ] M `ranges_slide.cpp` — `views::slide`
-- [ ] M `ranges_join_with.cpp` — `views::join_with`
-- [ ] M `ranges_cartesian.cpp` — `views::cartesian_product`
-- [ ] M `ranges_repeat.cpp` — `views::repeat`
-- [ ] M `out_ptr.cpp` — `std::out_ptr`, `inout_ptr`
-- [ ] M `print_println.cpp` — extend existing `print.cpp` if missing `println`
-- [ ] M `expected_constructors.cpp` — `expected` construction patterns
+- [x] M `expected_monadic.cpp`
+- [!] M `ranges_zip.cpp` — guarded; libc++ lacks `views::zip`
+- [!] M `ranges_enumerate.cpp` — guarded
+- [!] M `ranges_adjacent.cpp` — guarded
+- [!] M `ranges_chunk.cpp` — guarded
+- [!] M `ranges_slide.cpp` — guarded
+- [x] M `ranges_join_with.cpp`
+- [!] M `ranges_cartesian.cpp` — guarded
+- [x] M `ranges_repeat.cpp`
+- [x] M `out_ptr.cpp`
+- [x] M `print_println.cpp`
+- [x] M `expected_constructors.cpp`
 
 #### Low (6)
-- [ ] L `constexpr_unique_ptr.cpp` — constexpr expansion
-- [ ] L `auto_decay_copy.cpp` — `auto(x)` decay copy
-- [ ] L `size_t_literal.cpp` — `1uz` literal suffix
-- [ ] L `extended_floating_point.cpp` — `float16_t` etc.
-- [ ] L `consteval_if_propagation.cpp` — interactions with `consteval`
-- [ ] L `assume_attribute.cpp` — `[[assume(...)]]`
+- [x] L `constexpr_unique_ptr.cpp`
+- [x] L `auto_decay_copy.cpp`
+- [x] L `size_t_literal.cpp`
+- [!] L `extended_floating_point.cpp` — guarded; libc++ lacks `<stdfloat>`
+- [x] L `consteval_if_propagation.cpp`
+- [x] L `assume_attribute.cpp`
 
 ---
 
@@ -254,24 +254,30 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 - **Session 3 total: 15. Cumulative: 49 / 132 (37.1%)**
 
 ### Session 4 — 2026-04-10
-- cpp20 H: 8 new files (concepts_requires, barrier, stop_token, designated_initializers, aggregate_init_parens, string_starts_ends_with, atomic_ref, template_lambda)
-  - 2 H items already covered: latch+semaphore (sync_primitives.cpp), bit_cast (bit_manipulation.cpp)
-- cpp20 M: 7 new files (concepts_standard_library, ranges_factories, ranges_pipeline, chrono_calendar, format_advanced, coroutine_generator, lambda_pack_capture)
-  - 1 M item already covered: endian (bit_manipulation.cpp)
-- cpp20 L: 3 new files (feature_test_macros, consteval_propagation, aggregate_designated_array)
-- cpp20 gap items: 21/21 covered (18 new + 3 existing maps)
-- All 18 new files compiled with `-std=c++20 -Wall -Wextra` and run successfully
-- **Session 4 total: 18 new files. Cumulative: 67 / 132 (50.8%) — half-way!**
+- cpp20 H 8 new + M 7 new + L 3 new = 18 files
+- 3 items already covered by existing files (latch+semaphore, bit_cast, endian)
+- cpp20 gap items: 21/21
+- **Session 4 total: 18. Cumulative: 67 / 132 (50.8%)**
+
+### Session 5 — 2026-04-10
+- cpp23 H (9): flat_map_set, mdspan, generator (guarded), ranges_to, deducing_this, multidimensional_subscript, static_call_operator, string_contains, move_only_function (guarded)
+- cpp23 M (12): expected_monadic, ranges_zip/enumerate/adjacent/chunk/slide/join_with/cartesian/repeat (most guarded), out_ptr, print_println, expected_constructors
+- cpp23 L (6): constexpr_unique_ptr, auto_decay_copy, size_t_literal, extended_floating_point (guarded), consteval_if_propagation, assume_attribute
+- cpp23 fully done (27/27)
+- libc++ feature-test gating: 9 files use `#if defined(__cpp_lib_*)` guards with working fallbacks for Apple clang 21 (generator, move_only_function, ranges_zip/enumerate/adjacent/chunk/slide/cartesian, extended_float). All compile and run, falling through to portable workarounds.
+- **Session 5 total: 27 files. Cumulative: 94 / 132 (71.2%)**
 
 ### Next session starts at
 
 > Read this section first when resuming.
 
-**Pointer**: cpp23 batch — 27 items. Many will need `#if __has_include` guards
-because libc++ support varies (`flat_map`, `mdspan`, `generator`).
-Use `-std=c++2b -Wall -Wextra` (or `-std=c++23` depending on compiler).
+**Pointer**: pattern gaps — 35 files in `dp/cpp/`. Order:
+1. Concurrency (10): producer_consumer, thread_pool, active_object, monitor_object, reactor, proactor, double_checked_locking, read_write_lock, leader_followers, half_sync_half_async
+2. Architectural/DDD (12): cqrs, unit_of_work, specification, service_locator, lazy_initialization, data_mapper, value_object, domain_event, saga, pipes_and_filters, table_module, transaction_script
+3. Resilience (8): retry, bulkhead, timeout, throttling, cache_aside, health_endpoint, ambassador, compensating_transaction
+4. Modern C++ idioms (5): pimpl, crtp, type_erasure, tag_dispatch, policy_based_design
 
-After cpp23, continue with patterns (35).
+Pattern files are richer than spec files (~150-300 lines, 2-4 example domains, modern C++ variant). Match the style of existing `dp/cpp/strategy.cpp`. CMakeLists.txt is glob-based — new files are picked up automatically.
 
 **Compilation command template**:
 ```
