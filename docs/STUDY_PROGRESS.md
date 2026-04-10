@@ -190,18 +190,18 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 - [x] L `half_sync_half_async.cpp`
 
 ### Architectural / enterprise / DDD (12)
-- [ ] H `cqrs.cpp` — pairs with existing `event_sourcing.cpp`
-- [ ] H `unit_of_work.cpp` — PoEAA tx boundary
-- [ ] H `specification.cpp` — composable business rules
-- [ ] H `service_locator.cpp` — contrast with DI
-- [ ] M `lazy_initialization.cpp` — `std::call_once`, `once_flag`
-- [ ] M `data_mapper.cpp` — PoEAA
-- [ ] M `value_object.cpp` — DDD building block
-- [ ] M `domain_event.cpp` — DDD
-- [ ] M `saga.cpp` — distributed transaction
-- [ ] M `pipes_and_filters.cpp` — stream topology
-- [ ] L `table_module.cpp` — PoEAA
-- [ ] L `transaction_script.cpp` — PoEAA
+- [x] H `cqrs.cpp`
+- [x] H `unit_of_work.cpp`
+- [x] H `specification.cpp`
+- [x] H `service_locator.cpp`
+- [x] M `lazy_initialization.cpp`
+- [x] M `data_mapper.cpp`
+- [x] M `value_object.cpp`
+- [x] M `domain_event.cpp`
+- [x] M `saga.cpp`
+- [x] M `pipes_and_filters.cpp`
+- [x] L `table_module.cpp`
+- [x] L `transaction_script.cpp`
 
 ### Resilience / cloud (8)
 - [ ] H `retry.cpp` — pairs with `circuit_breaker.cpp`
@@ -265,20 +265,24 @@ correct `-std=c++NN` flag before it is marked `[x]`.
 - **Session 5 total: 27. Cumulative: 94 / 132 (71.2%)**
 
 ### Session 6 — 2026-04-10
-- Concurrency H (4): producer_consumer, thread_pool, active_object, monitor_object
-- Concurrency M (4): reactor, proactor, double_checked_locking, read_write_lock
-- Concurrency L (2): leader_followers, half_sync_half_async
-- Concurrency category fully done (10/10)
-- All 10 files compiled with `clang++ -std=c++17 -pthread` and run successfully
-- **Session 6 total: 10 files. Cumulative: 104 / 132 (78.8%)**
+- Concurrency 10/10 complete
+- **Session 6 total: 10. Cumulative: 104 / 132 (78.8%)**
+
+### Session 7 — 2026-04-10
+- Architectural/DDD H (4): cqrs, unit_of_work, specification, service_locator
+- Architectural/DDD M (6): lazy_initialization, data_mapper, value_object, domain_event, saga, pipes_and_filters
+- Architectural/DDD L (2): table_module, transaction_script
+- Architectural/DDD fully done (12/12)
+- All 12 files compiled with `clang++ -std=c++17` and run successfully
+- **Session 7 total: 12 files. Cumulative: 116 / 132 (87.9%)**
 
 ### Next session starts at
 
 > Read this section first when resuming.
 
-**Pointer**: pattern gaps continue — 25 remaining in `dp/cpp/`:
-1. ~~Concurrency (10)~~ ✅ done in Session 6
-2. Architectural/DDD (12): cqrs, unit_of_work, specification, service_locator, lazy_initialization, data_mapper, value_object, domain_event, saga, pipes_and_filters, table_module, transaction_script
+**Pointer**: pattern gaps continue — 13 remaining in `dp/cpp/`:
+1. ~~Concurrency (10)~~ ✅
+2. ~~Architectural/DDD (12)~~ ✅
 3. Resilience (8): retry, bulkhead, timeout, throttling, cache_aside, health_endpoint, ambassador, compensating_transaction
 4. Modern C++ idioms (5): pimpl, crtp, type_erasure, tag_dispatch, policy_based_design
 
