@@ -147,6 +147,36 @@ C++11이 사실상 "Modern C++"의 출발점입니다. C++98은 레거시 이해
 
 ---
 
+## Phase 6: 설계 원칙 & 아키텍처 (`solid/`, `arch/`, `ddd/`)
+
+디자인 패턴을 배운 뒤, "왜 이 패턴을 쓰는가"를 이해하는 단계입니다.
+
+### 6-1. SOLID 설계 원칙 (`solid/cpp/`)
+- `srp.cpp` — Single Responsibility
+- `ocp.cpp` — Open/Closed
+- `lsp.cpp` — Liskov Substitution
+- `isp.cpp` — Interface Segregation
+- `dip.cpp` — Dependency Inversion
+- `composition_over_inheritance.cpp` — 상속보다 조합
+- `tell_dont_ask.cpp` — 데이터를 꺼내지 말고 행동을 요청
+
+### 6-2. 소프트웨어 아키텍처 (`arch/cpp/`)
+- `layered.cpp` — Layered Architecture (N-tier)
+- `hexagonal.cpp` — Hexagonal (Ports & Adapters)
+- `clean_architecture.cpp` — Clean Architecture
+- `event_driven.cpp` — Event-Driven Architecture
+- `pipe_filter_arch.cpp` — Pipe & Filter Architecture
+
+### 6-3. Domain-Driven Design (`ddd/cpp/`)
+- `bounded_context.cpp` — 도메인 경계 분리
+- `aggregate_root.cpp` — 트랜잭션 경계와 불변식
+- `anti_corruption_layer.cpp` — 외부 시스템 모델 번역
+- `domain_service.cpp` — 애그리거트 간 비즈니스 로직
+- `event_driven_domain.cpp` — 도메인 이벤트 기반 통합
+- `specification_composite.cpp` — 복합 비즈니스 규칙
+
+---
+
 ## 학습 팁
 
 1. **빌드 후 실행**: 각 예제를 직접 빌드하고 실행해보세요
