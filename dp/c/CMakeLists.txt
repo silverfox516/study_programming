@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
 project(DesignPatternsC)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
+
+find_package(Threads REQUIRED)
 
 # Find all .c files in the current directory
 file(GLOB C_SOURCES "*.c")
@@ -11,6 +13,7 @@ file(GLOB C_SOURCES "*.c")
 foreach(source ${C_SOURCES})
     get_filename_component(target_name ${source} NAME_WE)
     add_executable(${target_name} ${source})
+    target_link_libraries(${target_name} PRIVATE Threads::Threads)
 
     # Set output directory
     set_target_properties(${target_name} PROPERTIES

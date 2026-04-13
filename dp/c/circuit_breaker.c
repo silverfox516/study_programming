@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include <unistd.h>
 
 // Service Call Function Pointer Type
 typedef bool (*ServiceCall)(void);
