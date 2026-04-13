@@ -127,4 +127,142 @@ path = "src/object_pool.rs"
 name = "circuit_breaker"
 path = "src/circuit_breaker.rs"
 
+[[bin]]
+name = "producer_consumer"
+path = "src/producer_consumer.rs"
 
+[[bin]]
+name = "thread_pool"
+path = "src/thread_pool.rs"
+
+[[bin]]
+name = "active_object"
+path = "src/active_object.rs"
+
+[[bin]]
+name = "monitor_object"
+path = "src/monitor_object.rs"
+
+[[bin]]
+name = "reactor"
+path = "src/reactor.rs"
+
+[[bin]]
+name = "proactor"
+path = "src/proactor.rs"
+
+[[bin]]
+name = "double_checked_locking"
+path = "src/double_checked_locking.rs"
+
+[[bin]]
+name = "read_write_lock"
+path = "src/read_write_lock.rs"
+
+[[bin]]
+name = "leader_followers"
+path = "src/leader_followers.rs"
+
+[[bin]]
+name = "half_sync_half_async"
+path = "src/half_sync_half_async.rs"
+
+[[bin]]
+name = "cqrs"
+path = "src/cqrs.rs"
+
+[[bin]]
+name = "unit_of_work"
+path = "src/unit_of_work.rs"
+
+[[bin]]
+name = "specification"
+path = "src/specification.rs"
+
+[[bin]]
+name = "service_locator"
+path = "src/service_locator.rs"
+
+[[bin]]
+name = "lazy_initialization"
+path = "src/lazy_initialization.rs"
+
+[[bin]]
+name = "data_mapper"
+path = "src/data_mapper.rs"
+
+[[bin]]
+name = "value_object"
+path = "src/value_object.rs"
+
+[[bin]]
+name = "domain_event"
+path = "src/domain_event.rs"
+
+[[bin]]
+name = "saga"
+path = "src/saga.rs"
+
+[[bin]]
+name = "pipes_and_filters"
+path = "src/pipes_and_filters.rs"
+
+[[bin]]
+name = "table_module"
+path = "src/table_module.rs"
+
+[[bin]]
+name = "transaction_script"
+path = "src/transaction_script.rs"
+
+[[bin]]
+name = "retry"
+path = "src/retry.rs"
+
+[[bin]]
+name = "bulkhead"
+path = "src/bulkhead.rs"
+
+[[bin]]
+name = "timeout"
+path = "src/timeout.rs"
+
+[[bin]]
+name = "throttling"
+path = "src/throttling.rs"
+
+[[bin]]
+name = "cache_aside"
+path = "src/cache_aside.rs"
+
+[[bin]]
+name = "health_endpoint"
+path = "src/health_endpoint.rs"
+
+[[bin]]
+name = "ambassador"
+path = "src/ambassador.rs"
+
+[[bin]]
+name = "compensating_transaction"
+path = "src/compensating_transaction.rs"
+
+[[bin]]
+name = "pimpl"
+path = "src/pimpl.rs"
+
+[[bin]]
+name = "type_erasure"
+path = "src/type_erasure.rs"
+
+[[bin]]
+name = "tag_dispatch"
+path = "src/tag_dispatch.rs"
+
+[[bin]]
+name = "crtp"
+path = "src/crtp.rs"
+
+[[bin]]
+name = "policy_based_design"
+path = "src/policy_based_design.rs"
