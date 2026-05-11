@@ -22,6 +22,8 @@ study_programming/
 ├── ddd/cpp/           # Domain-Driven Design 심화 (6 files)
 ├── practice/          # 단계별 풀이 실습 (spec/dp/... 와 1:1 매칭)
 │   └── spec/cpp/      #   spec 학습 후 풀어보는 step 문제 모음
+├── asio/              # Boost/standalone Asio 라이브러리 학습
+│   └── core/          #   io_context, executor, strand
 └── docs/              # 진행 추적 문서
     ├── STUDY_PROGRESS.md
     ├── STUDY_GAPS.md
