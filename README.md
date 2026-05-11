@@ -20,6 +20,8 @@ study_programming/
 ├── solid/cpp/         # SOLID 설계 원칙 (7 files)
 ├── arch/cpp/          # 소프트웨어 아키텍처 패턴 (5 files)
 ├── ddd/cpp/           # Domain-Driven Design 심화 (6 files)
+├── practice/          # 단계별 풀이 실습 (spec/dp/... 와 1:1 매칭)
+│   └── spec/cpp/      #   spec 학습 후 풀어보는 step 문제 모음
 └── docs/              # 진행 추적 문서
     ├── STUDY_PROGRESS.md
     ├── STUDY_GAPS.md
@@ -66,6 +68,7 @@ cmake --build . -j$(nproc)
 | solid/cpp (설계 원칙) | 7 | 전체 빌드 검증 완료 |
 | arch/cpp (아키텍처) | 5 | 전체 빌드 검증 완료 |
 | ddd/cpp (DDD) | 6 | 전체 빌드 검증 완료 |
+| practice/spec/cpp (실습) | 10 | cpp11/lambda_expressions step01~10 |
 
 자세한 항목별 진행 상황은 [docs/STUDY_PROGRESS.md](docs/STUDY_PROGRESS.md)를 참고하세요.
 
